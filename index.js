@@ -2,52 +2,46 @@ const freelancers = [
   {name: 'Alice', occupation: 'Writer', startingPrice: 30},
   {name: 'Bob', occupation: 'Teacher', startingPrice: 50},
   {name: 'Carol', occupation: 'Programmer', startingPrice: 70},
-  {name: 'Master Roshi', occupation: 'Legendary Martial Arts Teacher', startingPrice: 500}
+  {name: 'Master Roshi', occupation: 'Legendary Martial Arts Teacher', startingPrice: 500},
+  {name: 'Mario', occupation: 'Plumber', startingPrice: 100},
+  {name: 'Lindsay', occupation: 'Chef', startingPrice: 40},
+  {name: 'Barb', occupation: 'Dog Trainer', startingPrice: 60},
+  {name: 'Tony', occupation: 'Barber', startingPrice: 80},
+  {name: 'George', occupation: 'Gardener', startingPrice: 30}
 ];
+
+let freeLancersAdded = 2;
 
 const addFreelancer1 = setInterval(() => {
 
-  const nameSpot1 = document.querySelector(`#name-dest`)
-  nameSpot1.innerText = (freelancers[2].name)
+  if (freeLancersAdded < freelancers.length) {
+  const nameSpot1 = document.querySelector('#name-dest');
+  const newName = document.createElement('h4');
+  newName.innerText = (freelancers[`${freeLancersAdded}`].name);
+  nameSpot1.append(newName);
 
-  const occupationSpot1 = document.querySelector(`#occupation-dest`)
-  occupationSpot1.innerText = (freelancers[2].occupation)
+  const occupationSpot1 = document.querySelector(`#occupation-dest`);
+  const newOccupation = document.createElement('h4');
+  newOccupation.innerText = (freelancers[`${freeLancersAdded}`].occupation);
+  occupationSpot1.append(newOccupation);
 
-  const priceSpot1 = document.querySelector(`#price-dest`)
-  priceSpot1.innerText = (freelancers[2].startingPrice)
+  const priceSpot1 = document.querySelector(`#price-dest`);
+  const newPrice = document.createElement('h4');
+  newPrice.innerText = (freelancers[`${freeLancersAdded}`].startingPrice);
+  priceSpot1.append(newPrice);
+  freeLancersAdded = freeLancersAdded +1;
+  // console.log(freeLancersAdded);      //TEST
+  }
 
   const averageSpot = document.querySelector(`#average-dollars`)
 
   if (averageSpot.innerText = 40) {
-  let currentAverage = Number(averageSpot.innerText);
-  averageSpot.innerText = ((freelancers[0].startingPrice + freelancers[1].startingPrice + freelancers[2].startingPrice)) / (freelancers.length - 1);
+  let currentAverage = Number(freelancers.startingPrice) / freeLancersAdded;
+  averageSpot.innerText = currentAverage;
+  // console.log(typeof freelancers.startingPrice)  //TEST
   }
 
-  if (nameSpot1.length && occupationSpot1.length && priceSpot1.length) {
+  if (freeLancersAdded === freelancers.length) {
     clearInterval(addFreelancer1);
   }
 }, 2700)
-
-const addFreelancer2 = setInterval(() => {
-
-  const nameSpot2 = document.querySelector(`#name-dest-2`)
-  nameSpot2.innerText = (freelancers[3].name)
-
-  const occupationSpot2 = document.querySelector(`#occupation-dest-2`)
-  occupationSpot2.innerText = (freelancers[3].occupation)
-
-  const priceSpot2 = document.querySelector(`#price-dest-2`)
-  priceSpot2.innerText = (freelancers[3].startingPrice)
-
-  const averageSpot = document.querySelector(`#average-dollars`)
-
-  if (averageSpot.innerText = 50) {
-  let currentAverage = Number(averageSpot.innerText);
-  averageSpot.innerText = ((freelancers[0].startingPrice + freelancers[1].startingPrice + freelancers[2].startingPrice + freelancers[3].startingPrice)) / freelancers.length;
-  }
-
-  if (averageSpot.innerText = 162.5) {
-  clearInterval(addFreelancer2);
-  clearInterval(addFreelancer1);
-  }
-}, 5400)
