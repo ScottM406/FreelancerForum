@@ -12,6 +12,7 @@ const freelancers = [
 
 let freeLancersAdded = 2;
 
+
 const addFreelancer1 = setInterval(() => {
 
   if (freeLancersAdded < freelancers.length) {
@@ -33,11 +34,13 @@ const addFreelancer1 = setInterval(() => {
   // console.log(freeLancersAdded);      //TEST
   }
 
-  const averageSpot = document.querySelector(`#average-dollars`)
+  const averageSpot = document.querySelector(`#average-dollars`);
 
   if (averageSpot.innerText = 40) {
-  let currentAverage = Number(freelancers.startingPrice) / freeLancersAdded;
-  averageSpot.innerText = currentAverage;
+  let totalPrice = freelancers.slice(0, freeLancersAdded).reduce((accumulator, currentValue) =>
+    accumulator + currentValue.startingPrice, 0);
+  let currentAverage = totalPrice / freeLancersAdded;
+  averageSpot.innerText = currentAverage.toFixed(2);
   // console.log(typeof freelancers.startingPrice)  //TEST
   }
 
